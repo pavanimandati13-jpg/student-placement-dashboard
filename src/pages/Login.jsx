@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -15,32 +16,76 @@ function Login() {
   }
 
   return (
-    <div>
-      <h1>Student Placement Portal</h1>
+    <div className="login-page">
 
-      <h2>Login</h2>
+      <div className="login-card">
 
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Enter Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        {/* Logo */}
+        <div className="login-logo">
+          🎓
+        </div>
 
-        <br /><br />
+        <p className="section-label">STUDENT PLACEMENT PORTAL</p>
 
-        <input
-          type="password"
-          placeholder="Enter Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <h1>Welcome Back</h1>
 
-        <br /><br />
+        <p className="login-subtitle">
+          Sign in to continue to your placement dashboard.
+        </p>
 
-        <button type="submit">Login</button>
-      </form>
+        {/* Login Form */}
+        <form className="professional-login-form" onSubmit={handleLogin}>
+
+          <div className="form-group">
+            <label>Email Address</label>
+
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Password</label>
+
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
+          <div className="login-options">
+            <label className="remember-me">
+              <input type="checkbox" />
+              Remember me
+            </label>
+
+            <span className="forgot-password">
+              Forgot password?
+            </span>
+          </div>
+
+          <button type="submit" className="professional-login-btn">
+            Sign In →
+          </button>
+
+        </form>
+
+        {/* Registration Link */}
+        <div className="login-register">
+          <span>Don't have an account?</span>
+
+          <Link to="/registration">
+            Create Account
+          </Link>
+        </div>
+
+      </div>
+
     </div>
   )
 }

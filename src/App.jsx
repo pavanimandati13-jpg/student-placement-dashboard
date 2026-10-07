@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { PlacementProvider } from './context/PlacementContext'
 
 import Login from './pages/Login'
 import Registration from './pages/Registration'
@@ -11,31 +12,100 @@ import Notifications from './pages/Notifications'
 
 function App() {
   return (
-    <BrowserRouter>
-      <nav>
-        <Link to="/">Login</Link> |{' '}
-        <Link to="/registration">Registration</Link> |{' '}
-        <Link to="/dashboard">Dashboard</Link> |{' '}
-        <Link to="/profile">Profile</Link> |{' '}
-        <Link to="/jobs">Job Openings</Link> |{' '}
-        <Link to="/applications">My Applications</Link> |{' '}
-        <Link to="/interviews">Interviews</Link> |{' '}
-        <Link to="/notifications">Notifications</Link>
-      </nav>
+    <PlacementProvider>
+      <BrowserRouter>
 
-      <hr />
+        <div className="app-container">
 
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/jobs" element={<JobOpenings />} />
-        <Route path="/applications" element={<MyApplications />} />
-        <Route path="/interviews" element={<InterviewSchedule />} />
-        <Route path="/notifications" element={<Notifications />} />
-      </Routes>
-    </BrowserRouter>
+          <header className="top-header">
+
+            <div className="brand">
+              <div className="brand-icon">🎓</div>
+
+              <div>
+                <h2>PlacementHub</h2>
+                <span>Student Placement Portal</span>
+              </div>
+            </div>
+
+            <nav className="main-nav">
+              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/jobs">Jobs</Link>
+              <Link to="/applications">Applications</Link>
+              <Link to="/interviews">Interviews</Link>
+              <Link to="/notifications">Notifications</Link>
+              <Link to="/profile">Profile</Link>
+            </nav>
+
+            <div className="header-actions">
+
+              <Link className="login-link" to="/">
+                Login
+              </Link>
+
+              <Link className="register-btn" to="/registration">
+                Register
+              </Link>
+
+            </div>
+
+          </header>
+
+          <main className="main-content">
+
+            <Routes>
+
+              <Route path="/" element={<Login />} />
+
+              <Route
+                path="/registration"
+                element={<Registration />}
+              />
+
+              <Route
+                path="/dashboard"
+                element={<Dashboard />}
+              />
+
+              <Route
+                path="/profile"
+                element={<Profile />}
+              />
+
+              <Route
+                path="/jobs"
+                element={<JobOpenings />}
+              />
+
+              <Route
+                path="/applications"
+                element={<MyApplications />}
+              />
+
+              <Route
+                path="/interviews"
+                element={<InterviewSchedule />}
+              />
+
+              <Route
+                path="/notifications"
+                element={<Notifications />}
+              />
+
+            </Routes>
+
+          </main>
+
+          <footer className="footer">
+            <p>
+              © 2026 PlacementHub. Student Placement Portal.
+            </p>
+          </footer>
+
+        </div>
+
+      </BrowserRouter>
+    </PlacementProvider>
   )
 }
 

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function Registration() {
   const [name, setName] = useState('')
@@ -16,41 +17,84 @@ function Registration() {
   }
 
   return (
-    <div>
-      <h1>Student Placement Portal</h1>
+    <div className="login-page">
 
-      <h2>Registration</h2>
+      <div className="login-card">
 
-      <form onSubmit={handleRegister}>
-        <input
-          type="text"
-          placeholder="Enter Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+        {/* Logo */}
+        <div className="login-logo">
+          🎓
+        </div>
 
-        <br /><br />
+        <p className="section-label">STUDENT PLACEMENT PORTAL</p>
 
-        <input
-          type="email"
-          placeholder="Enter Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <h1>Create Account</h1>
 
-        <br /><br />
+        <p className="login-subtitle">
+          Register to access placement opportunities and track your career journey.
+        </p>
 
-        <input
-          type="password"
-          placeholder="Create Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        {/* Registration Form */}
+        <form
+          className="professional-login-form"
+          onSubmit={handleRegister}
+        >
 
-        <br /><br />
+          <div className="form-group">
+            <label>Full Name</label>
 
-        <button type="submit">Register</button>
-      </form>
+            <input
+              type="text"
+              placeholder="Enter your full name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Email Address</label>
+
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Password</label>
+
+            <input
+              type="password"
+              placeholder="Create a password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="professional-login-btn"
+          >
+            Create Account →
+          </button>
+
+        </form>
+
+        {/* Login Link */}
+        <div className="login-register">
+
+          <span>Already have an account?</span>
+
+          <Link to="/">
+            Sign In
+          </Link>
+
+        </div>
+
+      </div>
+
     </div>
   )
 }
